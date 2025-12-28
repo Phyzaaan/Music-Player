@@ -5,13 +5,14 @@ const musicDir = path.join(__dirname, 'music');
 const bannerDir = path.join(__dirname, 'music_banner');
 const scriptPath = path.join(__dirname, 'script.js');
 
-// Helper to format song name
+// Helper to get song artist name
 function getArtistName(filename) {
     let artist = filename.split(/-/g)[1];
     artist = artist ? artist.split(".")[0] : "Unknown";
     return artist.replace(/_/g, ' ').trim();
 }
 
+// Helper to get song name
 function getSongName(filename) {
     let name = filename.split(/-/g)[0];
     name = name.includes('.') ? name.split('.')[0] : name;
@@ -32,8 +33,8 @@ fs.readdir(musicDir, (err, files) => {
 
     const playlist = songs.map(file => {
         const baseName = path.basename(file);
+        
         // Check if corresponding image exists
-
         const songName = getSongName(baseName);
         const imgPath = path.join(bannerDir, `${songName}.png`);
 
