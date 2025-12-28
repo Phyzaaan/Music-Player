@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="background-blur" id="bg-blur"></div>
+
+        <div class="player-container">
+            <div class="img-area">
+                <div class="disc">
+                    <div class="svgDiv">
+                        <img class="svg" src="/disc-2.svg" alt="Music disc" />
+                        <img class="svg" src="/disc.svg" alt="Music disc" />
+                    </div>
+                    
+                    <div class="center-hole">
+                        <img id="banner-img" src="" alt="Album Art" id="main-banner">
+                    </div>
+                </div>
+            </div>
+
+            <div class="song-details">
+                <h2 class="name" id="song-name">Song Name</h2>
+                <p class="artist" id="song-artist">Artist Name</p>
+            </div>
+
+            <div class="progress-area">
+                <div class="progress-bar">
+                    <audio id="main-audio" src=""></audio>
+                </div>
+                <div class="song-timer">
+                    <span class="current-time">0:00</span>
+                    <span class="max-duration">0:00</span>
+                </div>
+            </div>
+
+            <div class="controls">
+                <i id="repeat-plist" class="material-icons" title="Playlist looped">repeat</i>
+                <i id="prev" class="material-icons">skip_previous</i>
+                <div class="play-pause">
+                    <i class="material-icons play">play_arrow</i>
+                </div>
+                <i id="next" class="material-icons">skip_next</i>
+                <i id="more-music" class="material-icons">queue_music</i>
+            </div>
+        </div>
+
+        <div class="music-list">
+            <div class="header">
+                <div class="row">
+                    <i class="material-icons">queue_music</i>
+                    <span>Music list</span>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Search music...">
+                    <i class="material-icons">search</i>
+                </div>
+                <i id="close" class="material-icons">close</i>
+            </div>
+            <ul>
+                <!-- here li list are coming from js -->
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
