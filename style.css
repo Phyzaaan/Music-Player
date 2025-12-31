@@ -178,6 +178,10 @@ body {
   opacity: 1;
 }
 
+.svgDiv :nth-child(1) {
+  scale: 1.424;
+}
+
 .img-area .center-hole {
   width: 65%;
   aspect-ratio: 1 / 1;
