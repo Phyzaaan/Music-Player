@@ -185,13 +185,14 @@ window.addEventListener("load", () => {
 });
 
 function loadMusic(indexNumb) {
+    let Imgurl = `music_banner/${allMusic[indexNumb - 1].img}.png`;
     musicName.innerText = allMusic[indexNumb - 1].name;
     musicArtist.innerText = allMusic[indexNumb - 1].artist;
-    musicImg.src = `music_banner/${allMusic[indexNumb - 1].img}.png`;
+    musicImg.src = Imgurl;
     mainAudio.src = `music/${allMusic[indexNumb - 1].src}`;
 
     // Update background blur
-    document.getElementById("bg-blur").style.backgroundImage = `url('music_banner/${allMusic[indexNumb - 1].img}.png')`;
+    document.getElementById("bg-blur").style.backgroundImage = `url("${Imgurl}")`;
 }
 
 function playMusic() {
