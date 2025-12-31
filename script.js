@@ -232,6 +232,21 @@ playPauseBtn.addEventListener("click", () => {
     playingSong();
 });
 
+document.addEventListener("keydown", (event) => {   
+    console.log(event.code);
+     
+    if (event.code == 'Space') {
+        const isMusicPlay = wrapper.classList.contains("playing");
+        //if isPlayMusic is true then call pauseMusic else call playMusic
+        isMusicPlay ? pauseMusic() : playMusic();
+        playingSong();
+    } else if (event.code == 'ArrowLeft') {
+        prevMusic();
+    } else if (event.code == 'ArrowRight') {
+        nextMusic();
+    }
+});
+
 prevBtn.addEventListener("click", () => {
     prevMusic();
 });
