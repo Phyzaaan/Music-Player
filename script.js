@@ -176,20 +176,61 @@ let allMusic = [
 ];
 // [PLAYLIST_END]
 
-let musicIndex = Math.floor((Math.random() * allMusic.length) + 1);
+// MediaMetadata will be initialized in loadMusic
+
+let music = localStorage.getItem('Music');
+
+let musicIndex = !!music ? JSON.parse(music).musicIndex : Math.floor((Math.random() * allMusic.length) + 1);
+let currentTime = !!music ? JSON.parse(music).currentTime : 0;
 
 
 window.addEventListener("load", () => {
-    loadMusic(musicIndex);
+    loadMusic(currentTime);
     playingSong();
+
+    const actionHandlers = {
+        play: () => playMusic(),
+        pause: () => pauseMusic(),
+        previoustrack: () => prevMusic(),
+        nexttrack: () => nextMusic(),
+        seekbackward: (details) => mainAudio.currentTime -= (details.seekOffset || 10),
+        seekforward: (details) => mainAudio.currentTime += (details.seekOffset || 10)
+    };
+
+    for (const [action, handler] of Object.entries(actionHandlers)) {
+        try {
+            navigator.mediaSession.setActionHandler(action, handler);
+        } catch (error) {
+            console.log(`The action "${action}" is not supported.`);
+        }
+    }
 });
 
-function loadMusic(indexNumb) {
-    let Imgurl = `music_banner/${allMusic[indexNumb - 1].img}.png`;
-    musicName.innerText = allMusic[indexNumb - 1].name;
-    musicArtist.innerText = allMusic[indexNumb - 1].artist;
+function saveToLocalStorage() {
+    let data = {
+        musicIndex: musicIndex,
+        currentTime: currentTime
+    }
+    localStorage.setItem('Music', JSON.stringify(data));
+}
+
+function loadMusic(currTime = 0) {
+    let Imgurl = `music_banner/${allMusic[musicIndex - 1].img}.png`;
+    musicName.innerText = allMusic[musicIndex - 1].name;
+    musicArtist.innerText = allMusic[musicIndex - 1].artist;
     musicImg.src = Imgurl;
-    mainAudio.src = `music/${allMusic[indexNumb - 1].src}`;
+    mainAudio.src = `music/${allMusic[musicIndex - 1].src}`;
+
+    mainAudio.currentTime = currTime;
+
+    // setting up the metadata for media notification bar
+    navigator.mediaSession.metadata = new MediaMetadata({
+        title: allMusic[musicIndex - 1].name,
+        artist: allMusic[musicIndex - 1].artist,
+        artwork: [
+            { src: Imgurl, sizes: '512x512', type: 'image/png' }
+        ]
+    });
 
     // Update background blur
     document.getElementById("bg-blur").style.backgroundImage = `url("${Imgurl}")`;
@@ -211,7 +252,7 @@ function prevMusic() {
     musicIndex--; //decrement of musicIndex by 1
     //if musicIndex is less than 1 then musicIndex will be the array length so the last music play
     musicIndex < 1 ? musicIndex = allMusic.length : musicIndex = musicIndex;
-    loadMusic(musicIndex);
+    loadMusic();
     playMusic();
     playingSong();
 }
@@ -220,7 +261,7 @@ function nextMusic() {
     musicIndex++; //increment of musicIndex by 1
     //if musicIndex is greater than array length then musicIndex will be 1 so the first music play
     musicIndex > allMusic.length ? musicIndex = 1 : musicIndex = musicIndex;
-    loadMusic(musicIndex);
+    loadMusic();
     playMusic();
     playingSong();
 }
@@ -232,9 +273,7 @@ playPauseBtn.addEventListener("click", () => {
     playingSong();
 });
 
-document.addEventListener("keydown", (event) => {   
-    console.log(event.code);
-     
+document.addEventListener("keydown", (event) => {
     if (event.code == 'Space') {
         const isMusicPlay = wrapper.classList.contains("playing");
         //if isPlayMusic is true then call pauseMusic else call playMusic
@@ -256,7 +295,7 @@ nextBtn.addEventListener("click", () => {
 });
 
 mainAudio.addEventListener("timeupdate", (e) => {
-    const currentTime = e.target.currentTime; //getting playing song currentTime
+    currentTime = e.target.currentTime; //getting playing song currentTime
     const duration = e.target.duration; //getting playing song total duration
     let progressWidth = (currentTime / duration) * 100;
     progressBar.style.width = `${progressWidth}%`;
@@ -280,16 +319,62 @@ mainAudio.addEventListener("timeupdate", (e) => {
         currentSec = `0${currentSec}`;
     }
     musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
+
+    // saving current song time and index
+    saveToLocalStorage();
 });
 
-progressArea.addEventListener("click", (e) => {
-    let progressWidth = progressArea.clientWidth; //getting width of progress bar
-    let clickedOffsetX = e.offsetX; //getting offset x value
-    let songDuration = mainAudio.duration; //getting song total duration
+// Make progress bar draggable
+let isDragging = false;
 
-    mainAudio.currentTime = (clickedOffsetX / progressWidth) * songDuration;
-    playMusic(); //calling playMusic function
-    playingSong();
+function updateProgress(e) {
+    const rect = progressArea.getBoundingClientRect();
+    const percentage = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    const newTime = percentage * mainAudio.duration;
+
+    if (!isNaN(newTime)) {
+        mainAudio.currentTime = newTime;
+        progressBar.style.width = `${percentage * 100}%`;
+    }
+}
+
+progressArea.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    updateProgress(e);
+    mainAudio.pause();
+});
+
+document.addEventListener('mousemove', (e) => {
+    if (isDragging) {
+        updateProgress(e);
+    }
+});
+
+
+document.addEventListener('mouseup', () => {
+    if (isDragging) {
+        isDragging = false;
+        const isMusicPlay = wrapper.classList.contains("playing");
+        if (isMusicPlay) {
+            mainAudio.play();
+        }
+    }
+});
+document.addEventListener('touchend', () => {
+    if (isDragging) {
+        isDragging = false;
+        const isMusicPlay = wrapper.classList.contains("playing");
+        if (isMusicPlay) {
+            mainAudio.play();
+        }
+    }
+});
+
+// Also support click for quick seeking
+progressArea.addEventListener('click', (e) => {
+    if (!isDragging) {
+        updateProgress(e);
+    }
 });
 
 const repeatBtn = wrapper.querySelector("#repeat-plist");
@@ -319,7 +404,7 @@ mainAudio.addEventListener("ended", () => {
             break;
         case "repeat_one":
             mainAudio.currentTime = 0; //setting audio current time to 0
-            loadMusic(musicIndex); //calling loadMusic function with argument, in the argument there is a index of current song
+            loadMusic(); //calling loadMusic function with argument, in the argument there is a index of current song
             playMusic(); //calling playMusic function
             break;
         case "shuffle":
@@ -328,7 +413,7 @@ mainAudio.addEventListener("ended", () => {
                 randIndex = Math.floor((Math.random() * allMusic.length) + 1);
             } while (musicIndex == randIndex); //this loop run until the next random number won't be the same of current musicIndex
             musicIndex = randIndex; //passing randomIndex to musicIndex
-            loadMusic(musicIndex);
+            loadMusic();
             playMusic();
             playingSong();
             break;
@@ -365,15 +450,15 @@ for (let i = 0; i < allMusic.length; i++) {
                   <span>${allMusic[i].name}</span>
                   <p>${allMusic[i].artist}</p>
                 </div>
-                <span id="${allMusic[i].src}" class="audio-duration">3:40</span>
-                <audio class="${allMusic[i].src}" src="music/${allMusic[i].src}"></audio>
+                <span id="duration-${i}" class="audio-duration">3:40</span>
+                <audio id="audio-${i}" src="music/${allMusic[i].src}"></audio>
               </li>`;
     ulTag.insertAdjacentHTML("beforeend", liTag);
 
-    let liAudioDuartionTag = ulTag.querySelector(`[id="${allMusic[i].src}"]`);
-    let liAudioTag = ulTag.querySelector(`[class="${allMusic[i].src}"]`);
-    
-    
+    let liAudioDuartionTag = ulTag.querySelector(`#duration-${i}`);
+    let liAudioTag = ulTag.querySelector(`#audio-${i}`);
+
+
     liAudioTag.addEventListener("loadeddata", () => {
         let duration = liAudioTag.duration;
         let totalMin = Math.floor(duration / 60);
@@ -409,8 +494,8 @@ function playingSong() {
 
 function clicked(element) {
     let getLiIndex = element.getAttribute("li-index");
-    musicIndex = getLiIndex; //passing that liindex to musicIndex
-    loadMusic(musicIndex);
+    musicIndex = parseInt(getLiIndex); //passing that liindex to musicIndex
+    loadMusic();
     playMusic();
     playingSong();
 }

@@ -84,12 +84,10 @@ body {
 }
 
 .player-container {
-  max-width: 600px;
-  width: 50vw;
   min-width: 350px;
+  width: calc(100vh / 1.9);
   max-height: calc(100vh - 80px);
-  aspect-ratio: 5/7;
-  /* min-height: 720px; */
+  min-height: 580px;
   padding: 40px;
   position: relative;
   border-radius: 32px;
@@ -139,6 +137,8 @@ body {
   aspect-ratio: 1 / 1;
   overflow: visible;
   margin-bottom: 8px;
+  position: relative;
+  pointer-events: none;
 }
 
 .img-area .disc {
@@ -152,9 +152,19 @@ body {
   border: 6px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), inset 0 0 30px rgba(102, 126, 234, 0.15);
   position: relative;
-  animation: rotate 20s infinite linear;
+  animation: rotate 10s linear infinite;
   animation-play-state: paused;
   transition: all 0.4s ease;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .player-container.playing .img-area .disc {
@@ -234,6 +244,7 @@ body {
   position: relative;
   overflow: visible;
   padding: 1px 0;
+  user-select: none;
 }
 
 .progress-area .progress-bar {
@@ -275,6 +286,7 @@ body {
 .progress-area .song-timer {
   margin-top: 10px;
   padding: 0 2px;
+  pointer-events: none;
 }
 
 .song-timer span {
@@ -286,7 +298,10 @@ body {
 
 .controls {
   margin: 48px 0 16px 0;
-  padding: 0 20px;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .controls i {
@@ -607,16 +622,6 @@ ul li.playing .audio-duration {
     pointer-events: none;
   }
 
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 /* Pulse animation for playing state */
