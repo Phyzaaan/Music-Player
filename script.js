@@ -329,7 +329,14 @@ let isDragging = false;
 
 function updateProgress(e) {
     const rect = progressArea.getBoundingClientRect();
-    const percentage = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    let clientX = e.clientX;
+
+    // Handle touch events
+    if (e.touches && e.touches.length > 0) {
+        clientX = e.touches[0].clientX;
+    }
+
+    const percentage = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
     const newTime = percentage * mainAudio.duration;
 
     if (!isNaN(newTime)) {
@@ -338,20 +345,27 @@ function updateProgress(e) {
     }
 }
 
-progressArea.addEventListener('mousedown', (e) => {
+function dragStart(e) {
     isDragging = true;
     updateProgress(e);
     mainAudio.pause();
-});
+};
+// Attach dragStart to progressArea for better touch target
+progressArea.addEventListener('mousedown', e => dragStart(e));
+progressArea.addEventListener('touchstart', e => dragStart(e));
 
-document.addEventListener('mousemove', (e) => {
+function dragging(e) {
     if (isDragging) {
+        if (e.type === 'touchmove') {
+            e.preventDefault(); // Prevent scrolling while dragging
+        }
         updateProgress(e);
     }
-});
+};
+document.addEventListener('mousemove', (e) => dragging(e));
+document.addEventListener('touchmove', (e) => dragging(e), { passive: false });
 
-
-document.addEventListener('mouseup', () => {
+function dragEnd() {
     if (isDragging) {
         isDragging = false;
         const isMusicPlay = wrapper.classList.contains("playing");
@@ -359,16 +373,9 @@ document.addEventListener('mouseup', () => {
             mainAudio.play();
         }
     }
-});
-document.addEventListener('touchend', () => {
-    if (isDragging) {
-        isDragging = false;
-        const isMusicPlay = wrapper.classList.contains("playing");
-        if (isMusicPlay) {
-            mainAudio.play();
-        }
-    }
-});
+};
+document.addEventListener('mouseup', () => dragEnd());
+document.addEventListener('touchend', () => dragEnd());
 
 // Also support click for quick seeking
 progressArea.addEventListener('click', (e) => {
