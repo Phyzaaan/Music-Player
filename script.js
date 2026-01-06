@@ -24,6 +24,12 @@ let allMusic = [
         "src": "Blazing_Heart-HOYO_MIX.m4a"
     },
     {
+        "name": "Break It Off",
+        "artist": "Pink Pnatheress",
+        "img": "Break_It_Off",
+        "src": "Break_It_Off-Pink_Pnatheress.mp3"
+    },
+    {
         "name": "Columbina's Lullaby",
         "artist": "Unknown",
         "img": "Columbina's_Lullaby",
@@ -72,12 +78,6 @@ let allMusic = [
         "src": "I_Really_Want_To_Stay_At_Your_House-Rosa_Walton_&_Hallie_Coggins.m4a"
     },
     {
-        "name": "In The End",
-        "artist": "Mellen Gi & Tommee Profitt",
-        "img": "In_The_End",
-        "src": "In_The_End-Mellen_Gi_&_Tommee_Profitt.m4a"
-    },
-    {
         "name": "Love Story",
         "artist": "Indila",
         "img": "Love_Story",
@@ -102,12 +102,6 @@ let allMusic = [
         "src": "My_Heart_Full_Of_Flames-PUBG_Mobile.m4a"
     },
     {
-        "name": "Ordinary",
-        "artist": "Alex Warren",
-        "img": "Ordinary",
-        "src": "Ordinary-Alex_Warren.m4a"
-    },
-    {
         "name": "Overboard",
         "artist": "Madds Buckley",
         "img": "Overboard",
@@ -118,12 +112,6 @@ let allMusic = [
         "artist": "Fouzia",
         "img": "Passing_Memories",
         "src": "Passing_Memories-Fouzia.m4a"
-    },
-    {
-        "name": "Pastlives",
-        "artist": "sapientdream",
-        "img": "Pastlives",
-        "src": "Pastlives-sapientdream.m4a"
     },
     {
         "name": "Please",
