@@ -12,7 +12,7 @@ const wrapper = document.querySelector(".player-container"),
     moreMusicBtn = wrapper.querySelector("#more-music"),
     closemoreMusic = musicList.querySelector("#close"),
     searchInput = musicList.querySelector("#search-input");
-
+    
 const ulTag = document.querySelector("ul");
 
 // [PLAYLIST_START]
@@ -78,6 +78,18 @@ let allMusic = [
         "src": "I_Really_Want_To_Stay_At_Your_House-Rosa_Walton_&_Hallie_Coggins.m4a"
     },
     {
+        "name": "Living Life In The Night",
+        "artist": "Unknown",
+        "img": "Living_Life_In_The_Night",
+        "src": "Living_Life_In_The_Night.mp3"
+    },
+    {
+        "name": "Love Is Gone",
+        "artist": "Acoustic",
+        "img": "Love Is Gone",
+        "src": "Love Is Gone - Acoustic.mp3"
+    },
+    {
         "name": "Love Story",
         "artist": "Indila",
         "img": "Love_Story",
@@ -93,13 +105,19 @@ let allMusic = [
         "name": "MoeChakkaFire",
         "artist": "issey",
         "img": "MoeChakkaFire",
-        "src": "MoeChakkaFire-issey.m4a"
+        "src": "MoeChakkaFire - issey.m4a"
     },
     {
         "name": "My Heart Full Of Flames",
         "artist": "PUBG Mobile",
         "img": "My_Heart_Full_Of_Flames",
         "src": "My_Heart_Full_Of_Flames-PUBG_Mobile.m4a"
+    },
+    {
+        "name": "On My Way",
+        "artist": "Alan Walker",
+        "img": "On_My_Way",
+        "src": "On_My_Way-Alan_Walker .mp3"
     },
     {
         "name": "Overboard",
@@ -117,13 +135,13 @@ let allMusic = [
         "name": "Please",
         "artist": "wiv",
         "img": "Please",
-        "src": "Please-wiv.mp3"
+        "src": "Please     -  wiv.mp3"
     },
     {
         "name": "Seventh Heaven",
         "artist": "milet",
         "img": "Seventh_Heaven",
-        "src": "Seventh_Heaven-milet.mp3"
+        "src": "Seventh_Heaven  - milet.mp3"
     },
     {
         "name": "Somewhere Only We Know",
@@ -160,6 +178,12 @@ let allMusic = [
         "artist": "Lost Sky ft Jex",
         "img": "music",
         "src": "Where_We_Started-Lost_Sky_ft_Jex.m4a"
+    },
+    {
+        "name": "threwitallaway!",
+        "artist": "Vxlious",
+        "img": "threwitallaway!",
+        "src": "threwitallaway!-Vxlious.mp3"
     }
 ];
 // [PLAYLIST_END]

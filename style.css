@@ -380,7 +380,6 @@ body {
   bottom: -55%;
   left: 0;
   width: 100%;
-  min-height: 580px;
   opacity: 0;
   color: var(--text-primary);
   padding: 24px 32px;

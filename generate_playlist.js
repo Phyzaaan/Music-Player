@@ -35,7 +35,7 @@ fs.readdir(musicDir, (err, files) => {
         const baseName = path.basename(file);
         
         // Check if corresponding image exists
-        const songName = getSongName(baseName);
+        const songName = getSongName(baseName).trim();
         const imgPath = path.join(bannerDir, `${songName}.png`);
 
         const hasImg = fs.existsSync(imgPath);
