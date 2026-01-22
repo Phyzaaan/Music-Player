@@ -138,12 +138,6 @@ let allMusic = [
         "src": "Please     -  wiv.mp3"
     },
     {
-        "name": "Seventh Heaven",
-        "artist": "milet",
-        "img": "Seventh_Heaven",
-        "src": "Seventh_Heaven  - milet.mp3"
-    },
-    {
         "name": "Somewhere Only We Know",
         "artist": "Gustixa & Rhianne",
         "img": "Somewhere_Only_We_Know",

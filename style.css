@@ -425,7 +425,7 @@ body {
 
 .header #close {
   font-size: 28px;
-  color: var(--dark-bg);
+  color: var(--text-primary);
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 4px;
