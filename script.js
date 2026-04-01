@@ -18,178 +18,136 @@ const ulTag = document.querySelector("ul");
 // [PLAYLIST_START]
 let allMusic = [
     {
-        "name": "Blazing Heart",
-        "artist": "HOYO MIX",
-        "img": "Blazing_Heart",
-        "src": "Blazing_Heart-HOYO_MIX.m4a"
-    },
-    {
-        "name": "Break It Off",
-        "artist": "Pink Pnatheress",
-        "img": "Break_It_Off",
-        "src": "Break_It_Off-Pink_Pnatheress.mp3"
-    },
-    {
-        "name": "Columbina's Lullaby",
-        "artist": "Unknown",
-        "img": "Columbina's_Lullaby",
-        "src": "Columbina's_Lullaby.m4a"
-    },
-    {
-        "name": "Dream",
-        "artist": "Lost Sky",
-        "img": "Dream",
-        "src": "Dream-Lost_Sky.m4a"
-    },
-    {
-        "name": "Fly Away",
-        "artist": "TheFatRat ft Anjulie",
-        "img": "Fly_Away",
-        "src": "Fly_Away-TheFatRat_ft_Anjulie.m4a"
-    },
-    {
-        "name": "GODS",
-        "artist": "Newjeans",
-        "img": "GODS",
-        "src": "GODS-Newjeans.m4a"
-    },
-    {
-        "name": "Golden Hour",
-        "artist": "JVKE",
-        "img": "Golden Hour",
-        "src": "Golden Hour - JVKE.mp3"
-    },
-    {
-        "name": "Grateful",
-        "artist": "NEFFEX",
-        "img": "Grateful",
-        "src": "Grateful-NEFFEX.m4a"
-    },
-    {
-        "name": "Headlights",
-        "artist": "Alan Waker ft Kiddo",
-        "img": "Headlights",
-        "src": "Headlights-Alan_Waker_ft_Kiddo.m4a"
-    },
-    {
-        "name": "Hope Is The Thing With Feathers",
-        "artist": "HOYO MIX",
-        "img": "Hope_Is_The_Thing_With_Feathers",
-        "src": "Hope_Is_The_Thing_With_Feathers-HOYO_MIX.m4a"
-    },
-    {
-        "name": "I Really Want To Stay At Your House",
-        "artist": "Rosa Walton & Hallie Coggins",
-        "img": "I_Really_Want_To_Stay_At_Your_House",
-        "src": "I_Really_Want_To_Stay_At_Your_House-Rosa_Walton_&_Hallie_Coggins.m4a"
-    },
-    {
-        "name": "Living Life In The Night",
-        "artist": "Unknown",
-        "img": "Living_Life_In_The_Night",
-        "src": "Living_Life_In_The_Night.mp3"
-    },
-    {
-        "name": "Love Is Gone",
-        "artist": "Acoustic",
-        "img": "Love Is Gone",
-        "src": "Love Is Gone - Acoustic.mp3"
-    },
-    {
-        "name": "Love Story",
-        "artist": "Indila",
-        "img": "Love_Story",
-        "src": "Love_Story- Indila.m4a"
+        "name": "On My Way",
+        "artist": "Alan Walker ft. Sabrina Carpenter & Farruko",
+        "banner": "On My Way.png",
+        "src": "Alan Walker ft. Sabrina Carpenter & Farruko - On My Way.mp3"
     },
     {
         "name": "Lovely",
-        "artist": "Billie Eilish",
-        "img": "Lovely",
-        "src": "Lovely-Billie_Eilish.m4a"
+        "artist": "Billie Eilish ft. Khalid",
+        "banner": "Lovely.png",
+        "src": "Billie Eilish ft. Khalid - Lovely.mp3"
+    },
+    {
+        "name": "I Really Want to Stay at Your House",
+        "artist": "Cyber Punk ft. Rosa Walton & Hallie Coggins",
+        "banner": "I Really Want To Stay At Your House.png",
+        "src": "Cyber Punk ft. Rosa Walton & Hallie Coggins - I Really Want to Stay at Your House.mp3"
     },
     {
         "name": "Middle of the Night",
         "artist": "Elley Duhé",
-        "img": "Middle of the Night",
-        "src": "Middle of the Night - Elley Duhé.mp3"
-    },
-    {
-        "name": "MoeChakkaFire",
-        "artist": "issey",
-        "img": "MoeChakkaFire",
-        "src": "MoeChakkaFire - issey.m4a"
-    },
-    {
-        "name": "My Heart Full Of Flames",
-        "artist": "PUBG Mobile",
-        "img": "My_Heart_Full_Of_Flames",
-        "src": "My_Heart_Full_Of_Flames-PUBG_Mobile.m4a"
-    },
-    {
-        "name": "On My Way",
-        "artist": "Alan Walker",
-        "img": "On_My_Way",
-        "src": "On_My_Way-Alan_Walker .mp3"
-    },
-    {
-        "name": "Overboard",
-        "artist": "Madds Buckley",
-        "img": "Overboard",
-        "src": "Overboard-Madds_Buckley.m4a"
-    },
-    {
-        "name": "Passing Memories",
-        "artist": "Fouzia",
-        "img": "Passing_Memories",
-        "src": "Passing_Memories-Fouzia.m4a"
-    },
-    {
-        "name": "Please",
-        "artist": "wiv",
-        "img": "Please",
-        "src": "Please     -  wiv.mp3"
-    },
-    {
-        "name": "Somewhere Only We Know",
-        "artist": "Gustixa & Rhianne",
-        "img": "Somewhere_Only_We_Know",
-        "src": "Somewhere_Only_We_Know-Gustixa_&_Rhianne.m4a"
+        "banner": "Middle of the Night.png",
+        "src": "Elley Duhé - Middle of the Night.mp3"
     },
     {
         "name": "Star Odyssey",
-        "artist": "HOYO MIX",
-        "img": "Star_Odyssey",
-        "src": "Star_Odyssey-HOYO_MIX.mp3"
+        "artist": "Hoyo Mix ft. Airi Suzuki",
+        "banner": "Star Odyssey.png",
+        "src": "Hoyo Mix ft. Airi Suzuki - Star Odyssey.mp3"
     },
     {
-        "name": "Summertime",
-        "artist": "Maggie",
-        "img": "Summertime",
-        "src": "Summertime-Maggie.m4a"
+        "name": "Hope Is the Thing With Feathers",
+        "artist": "Hoyo Mix ft. Chevy",
+        "banner": "Hope Is The Thing With Feathers.png",
+        "src": "Hoyo Mix ft. Chevy - Hope Is the Thing With Feathers.mp3"
+    },
+    {
+        "name": "Blazing Heart",
+        "artist": "Hoyo Mix ft. Chrissy Costanza",
+        "banner": "Blazing Heart.png",
+        "src": "Hoyo Mix ft. Chrissy Costanza -  Blazing Heart.mp3"
+    },
+    {
+        "name": "Columbina's Lullaby",
+        "artist": "Hoyo Mix ft. Elim",
+        "banner": "Columbina's Lullaby.png",
+        "src": "Hoyo Mix ft. Elim - Columbina's Lullaby.mp3"
+    },
+    {
+        "name": "Passing Memories",
+        "artist": "Hoyo Mix ft. Faouzia",
+        "banner": "Passing Memories.jpeg",
+        "src": "Hoyo Mix ft. Faouzia - Passing Memories.mp3"
+    },
+    {
+        "name": "MoeChakkaFire",
+        "artist": "Issey",
+        "banner": "MoeChakkaFire.png",
+        "src": "Issey - MoeChakkaFire.mp3"
+    },
+    {
+        "name": "Golden Hour",
+        "artist": "JVKE",
+        "banner": "Golden Hour.png",
+        "src": "JVKE - Golden Hour.mp3"
     },
     {
         "name": "Summertime Sadness",
         "artist": "Lana Del Rey",
-        "img": "Summertime_Sadness",
-        "src": "Summertime_Sadness-Lana_Del_Rey.m4a"
+        "banner": "Summertime Sadness.png",
+        "src": "Lana Del Rey - Summertime Sadness.mp3"
+    },
+    {
+        "name": "Dreams pt II",
+        "artist": "Lost Sky ft. Sara Skinner",
+        "banner": "Dreams pt II.jpeg",
+        "src": "Lost Sky ft. Sara Skinner - Dreams pt II.mp3"
+    },
+    {
+        "name": "Overboard",
+        "artist": "Madds Buckley",
+        "banner": "Overboard.png",
+        "src": "Madds Buckley - Overboard.mp3"
+    },
+    {
+        "name": "Kimi no toriko ♪ •  Summertime",
+        "artist": "Maggie ft. Nyan",
+        "banner": "Kimi no toriko ♪ • Summertime.png",
+        "src": "Maggie ft. Nyan - Kimi no toriko ♪ •  Summertime.mp3"
+    },
+    {
+        "name": "Grateful",
+        "artist": "NEFFEX",
+        "banner": "Grateful.png",
+        "src": "NEFFEX - Grateful.mp3"
+    },
+    {
+        "name": "My Heart Full Of Flames",
+        "artist": "PUBG ft. Mars Atlas",
+        "banner": "My Heart Full of Flames.png",
+        "src": "PUBG ft. Mars Atlas - My Heart Full Of Flames.mp3"
+    },
+    {
+        "name": "Break It Off",
+        "artist": "Pink Pantheress",
+        "banner": "Break It Off.png",
+        "src": "Pink Pantheress - Break It Off.mp3"
     },
     {
         "name": "Sunflower",
-        "artist": "Post Malone & Swae Lee",
-        "img": "Sunflower",
-        "src": "Sunflower-Post_Malone_&_Swae_Lee.m4a"
+        "artist": "Post Malone ft. Swae Lee",
+        "banner": "Sunflower.png",
+        "src": "Post Malone ft. Swae Lee - Sunflower.mp3"
     },
     {
-        "name": "Where We Started",
-        "artist": "Lost Sky ft Jex",
-        "img": "music",
-        "src": "Where_We_Started-Lost_Sky_ft_Jex.m4a"
+        "name": "Stay",
+        "artist": "The Kid LAROI ft. Justin Bieber",
+        "banner": "Stay.jpg",
+        "src": "The Kid LAROI ft. Justin Bieber - Stay.mp3"
     },
     {
         "name": "threwitallaway!",
         "artist": "Vxlious",
-        "img": "threwitallaway!",
-        "src": "threwitallaway!-Vxlious.mp3"
+        "banner": "threwitallaway!.png",
+        "src": "Vxlious - threwitallaway!.mp3"
+    },
+    {
+        "name": "Please",
+        "artist": "wiv",
+        "banner": "Please.png",
+        "src": "wiv - Please.mp3"
     }
 ];
 // [PLAYLIST_END]
@@ -233,7 +191,7 @@ function saveToLocalStorage() {
 }
 
 function loadMusic(currTime = 0) {
-    let Imgurl = `music_banner/${allMusic[musicIndex - 1].img}.png`;
+    let Imgurl = `music_banner/${allMusic[musicIndex - 1].banner}`;
     musicName.innerText = allMusic[musicIndex - 1].name;
     musicArtist.innerText = allMusic[musicIndex - 1].artist;
     musicImg.src = Imgurl;
