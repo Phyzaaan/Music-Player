@@ -54,6 +54,12 @@ let allMusic = [
         "src": "GODS-Newjeans.m4a"
     },
     {
+        "name": "Golden Hour",
+        "artist": "JVKE",
+        "img": "Golden Hour",
+        "src": "Golden Hour - JVKE.mp3"
+    },
+    {
         "name": "Grateful",
         "artist": "NEFFEX",
         "img": "Grateful",
@@ -100,6 +106,12 @@ let allMusic = [
         "artist": "Billie Eilish",
         "img": "Lovely",
         "src": "Lovely-Billie_Eilish.m4a"
+    },
+    {
+        "name": "Middle of the Night",
+        "artist": "Elley Duhé",
+        "img": "Middle of the Night",
+        "src": "Middle of the Night - Elley Duhé.mp3"
     },
     {
         "name": "MoeChakkaFire",

@@ -152,9 +152,18 @@ body {
   border: 6px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), inset 0 0 30px rgba(102, 126, 234, 0.15);
   position: relative;
+<<<<<<< HEAD
   animation: rotate 10s linear infinite;
   animation-play-state: paused;
   transition: all 0.4s ease;
+=======
+  transition: all 0.4s ease;
+}
+
+.img-area .svgDiv {
+  animation: rotate 10s linear infinite;
+  animation-play-state: paused;
+>>>>>>> 2e9cdb6 (removed some songs)
 }
 
 @keyframes rotate {
@@ -168,10 +177,20 @@ body {
 }
 
 .player-container.playing .img-area .disc {
+<<<<<<< HEAD
   animation-play-state: running;
   box-shadow: 0 16px 50px rgba(102, 126, 234, 0.3), inset 0 0 30px rgba(102, 126, 234, 0.2);
 }
 
+=======
+  box-shadow: 0 16px 50px rgba(102, 126, 234, 0.3), inset 0 0 30px rgba(102, 126, 234, 0.2);
+}
+
+.player-container.playing .img-area .svgDiv {
+  animation-play-state: running;
+}
+
+>>>>>>> 2e9cdb6 (removed some songs)
 .img-area .disc .svgDiv {
   position: absolute;
   top: 0;
