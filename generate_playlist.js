@@ -22,8 +22,8 @@ function getSongName(filename) {
 // Helper to get song image
 function getSongBanner(songName) {
     let files = fs.readdirSync(bannerDir);
-    const bannerPath = files.find( items => items.toLowerCase().includes(songName.toLowerCase()));
-    return !!bannerPath ? bannerPath : "Music.png";
+    let path = files.find(items => items.split('.').slice(0, -1).join('.').toLowerCase() == songName.toLowerCase());
+    return !!path ? path : "Music.png";
 }
 
 // Read music directory
@@ -40,15 +40,15 @@ fs.readdir(musicDir, (err, files) => {
 
     const playlist = songs.map(file => {
         const baseName = path.basename(file);
-        
+
         // Check if corresponding image exists
         const songName = getSongName(baseName);
         const songBanner = getSongBanner(songName);
 
         return {
             name: songName.replace(/_/g, ' '),
-            artist: getArtistName(baseName), 
-            banner: songBanner, 
+            artist: getArtistName(baseName),
+            banner: songBanner,
             src: baseName
         };
     });

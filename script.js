@@ -104,7 +104,7 @@ let allMusic = [
     {
         "name": "Kimi no toriko ♪ •  Summertime",
         "artist": "Maggie ft. Nyan",
-        "banner": "Kimi no toriko ♪ • Summertime.png",
+        "banner": "Kimi no toriko ♪ •  Summertime.png",
         "src": "Maggie ft. Nyan - Kimi no toriko ♪ •  Summertime.mp3"
     },
     {
