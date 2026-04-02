@@ -15,7 +15,7 @@ function getArtistName(filename) {
 // Helper to get song name
 function getSongName(filename) {
     let name = filename.includes("-") ? filename.split(/-/g)[1] : filename;
-    name = name.includes(".") ? name.split('.')[0] : name;
+    name = name.includes(".") ? name.split('.').slice(0, -1).join('.') : name;
     return name.replace(/_/g, ' ').trim();
 }
 
