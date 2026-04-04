@@ -38,7 +38,7 @@ let allMusic = [
     {
         "name": "Middle of the Night",
         "artist": "Elley Duhé",
-        "banner": "Middle of the Night.png",
+        "banner": "Middle of the Night.jpeg",
         "src": "Elley Duhé - Middle of the Night.mp3"
     },
     {
@@ -68,7 +68,7 @@ let allMusic = [
     {
         "name": "Passing Memories",
         "artist": "Hoyo Mix ft. Faouzia",
-        "banner": "Passing Memories.jpeg",
+        "banner": "Passing Memories.jpg",
         "src": "Hoyo Mix ft. Faouzia - Passing Memories.mp3"
     },
     {
@@ -86,7 +86,7 @@ let allMusic = [
     {
         "name": "Summertime Sadness",
         "artist": "Lana Del Rey",
-        "banner": "Summertime Sadness.png",
+        "banner": "Summertime Sadness.jpg",
         "src": "Lana Del Rey - Summertime Sadness.mp3"
     },
     {
