@@ -2,8 +2,8 @@ const { log } = require('console');
 const fs = require('fs');
 const path = require('path');
 
-const musicDir = path.join(__dirname, 'music');
-const bannerDir = path.join(__dirname, 'music_banner');
+const songsDir = path.join(__dirname, 'songs');
+const bannerDir = path.join(__dirname, 'songs_banner');
 const scriptPath = path.join(__dirname, 'script.js');
 
 // Helper to get song artist name
@@ -26,16 +26,16 @@ function getSongBanner(songName) {
     return !!path ? path : "Music.png";
 }
 
-// Read music directory
-fs.readdir(musicDir, (err, files) => {
+// Read songs directory
+fs.readdir(songsDir, (err, files) => {
     if (err) {
-        console.error('Error reading music directory:', err);
+        console.error('Error reading songs directory:', err);
         return;
     }
 
     const songs = files.filter(file => {
-        let songs = file.endsWith(".mp3") || file.endsWith(".wav") || file.endsWith(".opus") || file.endsWith(".m4a");
-        return songs;
+        let song = file.endsWith(".mp3") || file.endsWith(".wav") || file.endsWith(".opus") || file.endsWith(".m4a");
+        return song;
     });
 
     const playlist = songs.map(file => {
@@ -54,7 +54,7 @@ fs.readdir(musicDir, (err, files) => {
     });
 
     const playlistString = `// [PLAYLIST_START]
-let allMusic = ${JSON.stringify(playlist, null, 4)};
+let allSongs = ${JSON.stringify(playlist, null, 4)};
 // [PLAYLIST_END]`;
 
     // Read script.js
@@ -75,7 +75,7 @@ let allMusic = ${JSON.stringify(playlist, null, 4)};
                 return;
             }
             console.log('Playlist updated successfully!');
-            console.log(`Added ${playlist.length} songs.`);
+            console.log(`Added ${playlist.length} song.`);
         });
     });
 });

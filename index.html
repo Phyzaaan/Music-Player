@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Player</title>
+    <title>Song Player</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="./music_banner/Music.png">
+    <link rel="icon" href="./songs_banner/Music.png">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -20,8 +20,8 @@
             <div class="img-area">
                 <div class="disc">
                     <div class="svgDiv">
-                        <img class="svg" src="./assets/disc.svg" alt="Music disc" />
-                        <img class="svg" src="./assets/disc-2.svg" alt="Music disc" />
+                        <img class="svg" src="./assets/disc.svg" alt="Song disc" />
+                        <img class="svg" src="./assets/disc-2.svg" alt="Song disc" />
                     </div>
 
                     <div class="center-hole">
@@ -47,23 +47,23 @@
 
             <div class="controls">
                 <i id="repeat-plist" class="material-icons" title="Playlist looped">repeat</i>
-                <i id="prev" class="material-icons">skip_previous</i>
-                <div class="play-pause">
-                    <i class="material-icons play">play_arrow</i>
-                </div>
-                <i id="next" class="material-icons">skip_next</i>
-                <i id="more-music" class="material-icons">queue_music</i>
+                    <i id="prev" class="material-icons">skip_previous</i>
+                    <div class="play-pause">
+                        <i class="material-icons play">play_arrow</i>
+                    </div>
+                    <i id="next" class="material-icons">skip_next</i>
+                <i id="more-songs" class="material-icons">queue_music</i>
             </div>
         </div>
 
-        <div class="music-list">
+        <div class="songs-list">
             <div class="header">
                 <div class="row">
                     <i class="material-icons">queue_music</i>
-                    <span>Music list</span>
+                    <span>Song list</span>
                 </div>
                 <div class="search-box">
-                    <input type="text" id="search-input" placeholder="Search music...">
+                    <input type="text" id="search-input" placeholder="Search song...">
                     <i class="material-icons">search</i>
                 </div>
                 <i id="close" class="material-icons">close</i>
